@@ -35,3 +35,8 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Specified files & folders #
+#####################
+Assessment/
+*.code-workspace
