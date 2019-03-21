@@ -1,3 +1,5 @@
+require "byebug"
+
 class Board
   attr_accessor :cups
 
@@ -14,10 +16,12 @@ class Board
     @name1 = name1
     @name2 = name2
     @cups = Board.fresh_cups
+    @store1 = @cups[6]
+    @store2 = @cups[13]
   end
 
   def place_stones
-    # helper method to #initialize every non-store cup with four stones each
+    [:stone, :stone, :stone, :stone]
   end
 
   def valid_move?(start_pos)
@@ -34,19 +38,25 @@ class Board
 
   def make_move(start_pos, current_player_name)
     stones = cups[start_pos]
-    new_pos = start_pos + 1
     cups[start_pos] = []
+    new_pos = start_pos + 1
+    new_pos = 0 if new_pos > 13
     until stones.empty?
-      unless cups[new_pos]
-        cups[new_pos] << :stone 
-        stones = stones.drop(1)
-      end
-      new_pos += 1
+      new_pos += 1 if current_player_name == @name1 && new_pos == 13
+      new_pos += 1 if current_player_name == @name2 && new_pos == 6
+      new_pos = 0 if new_pos > 13
+      cups[new_pos] << :stone 
+      stones = stones.drop(1)
+      new_pos += 1 unless stones.empty? || @cups[new_pos] == 1
     end
+    render
+    next_turn(new_pos)
   end
 
   def next_turn(ending_cup_idx)
-    # helper method to determine whether #make_move returns :switch, :prompt, or ending_cup_idx
+    return :prompt if ending_cup_idx == 6 || ending_cup_idx == 13
+    return :switch if cups[ending_cup_idx].count == 1
+    return ending_cup_idx if !cups[ending_cup_idx].empty?
   end
 
   def render
@@ -58,9 +68,12 @@ class Board
   end
 
   def one_side_empty?
+    @cups[0..5].all?(&:empty?) || @cups[7..12].all?(&:empty?)
   end
 
   def winner
+    return :draw if @cups[13].count == @cups[6].count
+    @cups[6].count > @cups[13].count ? @name1 : @name2
   end
 end
 
