@@ -1,17 +1,35 @@
 class Piece
 
+  COLORS = :black, :white
+  PIECES = "♕"
 
-  def inspect
-    'x'
+  attr_accessor :color, :board, :pos
+
+
+  def initialize(color, board, pos)
+    @color = color
+    @board = board
+    @pos = pos
+    @totem = nil
   end
 
-end
-
-class NullPiece < Piece
-
-  def inspect
-    '_'
+  def move_dirs
   end
 
+  def to_s
+    @totem
+  end
 
+  def set_pos(pos)
+    self.pos = pos
+  end
+  # def queen   #Remove later
+  #  PIECES
+  # end
 end
+
+
+
+
+
+

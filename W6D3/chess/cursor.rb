@@ -100,10 +100,6 @@ class Cursor
     x, y = @cursor_pos
     dx, dy = diff
     proposed_pos = [x + dx, y + dy]
-    if board.valid_pos?(proposed_pos)
-      @cursor_pos = proposed_pos
-    else
-      raise "#{proposed_pos} is invalid!"
-    end
+    @cursor_pos = proposed_pos if board.valid_pos?(proposed_pos)
   end
 end

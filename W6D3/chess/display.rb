@@ -1,5 +1,6 @@
-require_relative "./cursor.rb"
-require_relative "./board.rb"
+require_relative "cursor"
+require_relative "board"
+require 'colorize'
 require "byebug"
 
 class Display
@@ -12,24 +13,35 @@ class Display
     end
 
     def render
-        # need to clear screen
-        puts "  0  1  2  3  4  5  6  7 "
-        # debugger
+        system("clear")
+
         @board.grid.each_with_index do |row, i|
-            print "#{i} "
-            row.each do |col|
+            row.each_with_index do |col, j|
+                cx, cy = cursor.cursor_pos
+                on_cursor_pos = i == cx && j == cy
+                bg = on_cursor_pos ? :light_red : ((i + j).even? ? :light_yellow : :light_green)
                 if col.is_a?(NullPiece)
-                  print " _ "  
+                  print "   ".colorize(:background => bg)  
                 else
-                  print " #{col.inspect} "
+                  print " #{col.to_s} ".colorize(:color => :black, :background => bg)  
                 end
             end
             print "\n"
         end
     end
 
+    def test
+        while true
+            render
+            puts "Enter move"
+            input = cursor.get_input
+        end
+    end
+
 end
 
-
 d = Display.new
-d.render
+d.test
+# d.board.move_piece([0,0],[4,4])
+# print d.board[[4,4]].moves
+# print d.board[[1,4]].moves
