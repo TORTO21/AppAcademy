@@ -42,6 +42,7 @@ describe Dessert do
       brownie.add_ingredient('chocolate')
       brownie.add_ingredient('vegetable oil')
       brownie.add_ingredient('flour')
+      brownie.mix!
       expect(brownie.ingredients).to contain_exactly('chocolate', 'eggs', 'flour', 'vegetable oil')
     end
   end
@@ -68,8 +69,8 @@ describe Dessert do
   
   describe "#make_more" do
     it "calls bake on the dessert's chef with the dessert passed in" do
-      allow(chef).to receive(:bake).with(brownie)
-      # brownie.make_more
+      expect(chef).to receive(:bake).with(brownie)
+      brownie.make_more
     end
   end
 end
