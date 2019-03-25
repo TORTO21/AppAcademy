@@ -38,5 +38,7 @@ Thumbs.db
 
 # Specified files & folders #
 #####################
-Assessment/
+Assessments/
+Installs/
+Notes/
 *.code-workspace
