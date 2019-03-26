@@ -43,4 +43,23 @@ ol {
   font-weight: bold;
 }
 
+input[type="radio"] {
+  cursor: pointer;
+  outline: none;
+}
 
+select {
+  cursor: pointer;
+  outline: none;
+}
+
+form input:last-child:hover {
+  cursor: pointer;
+  outline: none;
+  background-color: gold;  
+  -webkit-filter: brightness(90%);
+}
+
+h2[id="directions"] ol li:nth-of-type(2n) {
+  background-color: light-grey;
+}
