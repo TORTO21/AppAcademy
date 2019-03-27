@@ -100,10 +100,9 @@ class ResizingIntSet
   end
 
   def resize!
-    # either create a new array or new object
-    # better to be an object to use #insert
-    new_size = ResizingIntSet.new(num_buckets * 2)
-    @store.flatten.each { |el| new_size.insert(el) } 
-    p @store = new_size 
+    new_num_buckets = num_buckets * 2
+    new_array = Array.new(new_num_buckets) { Array.new }
+    @store.flatten.each { |el| new_array[el % new_num_buckets] << el } 
+    @store = new_array
   end
 end
