@@ -36,12 +36,20 @@
 ehthumbs.db
 Thumbs.db
 
-# Specified files & folders #
+# Specified folders #
 #####################
 Assessments/
 Installs/
 Notes/
 Personal/
+Lecture/
+aA\ Ruby\ Foundation\ Projects/
+node_modules/
+
+# Specified files #
+###################
 *.code-workspace
 .eslintrc.js
 package-lock.json
+
+
