@@ -120,16 +120,12 @@ def teachers_and_divisions
   # the the teacher is in dept 1 or 2 and 'Art' otherwise.
   execute(<<-SQL)
     SELECT
-      (
-        name - CASE
-        WHEN dept_id = 1
-        CONCAT(name, ' Sci')
-        WHEN dept_id = 2
-        CONCAT(name, ' Sci')
-        ELSE
-        CONCAT(name, 'Art')
-        END
-        )
+      teachers.name, 
+      CASE dept_id
+      WHEN 1 THEN 'Sci'
+      WHEN 2 THEN 'Sci'
+      ELSE 'Art'
+      END
     FROM
       teachers
     ;
