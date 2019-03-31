@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  
+  body {
+    background-color: gray;
+  }
+
+  /*
+  DISPLAY
+  =======
+  - NONE
+    > useful when puting something on the page, but don't want it seen
+    > can toggle if something is visible or not
+    > not rendered onto the page
+  - BLOCK
+    > the space it takes up is the full width of the page, but only the min ht
+    > they do not tolerate neighbors.  So they'll stack.
+    > blocks are more for building a layout, positining objects in the right spot
+  - INLINE
+    > like a word in a paragaraph
+    > has a base line and wraps around depending on available space
+    > meant for inline flow
+    > always keeps "line height" causing margin and padding issues
+    > cannot specify 'height' and 'width'
+    > use case: highlighting a line in a paragraph
+    > the spaces between tags show up as space
+    > EXAMPLES INCLUDE:
+      -- a (anchor)
+      -- strong
+      -- span
+      -- time
+  - INLINE-BLOCK
+    > combination of block and inline (obviously)
+    > forces elements around them to respect both horizontal and vertical space
+
+  - FLEX
+
+  COMBINATIONS
+  - INLINE-BLOCK
+  - INLINE-FLEX
+  - INLINE-FLEXBOX
+  
+  */
+  
+  .none {
+    display: none;
+  }
+
+  .block {
+    display: block;
+    background: pink;
+  }
+
+  .inline {
+    display: inline;
+    background: orange;
+  }
+  
+  span {
+    background: green;
+    padding: 10px;
+    display: block;
+  }
+
+  strong {
+  background: yellow;
+  padding: 10px;
+  } 
+
+  .inline-block > strong {
+    background: lightgoldenrodyellow
+    width: 100px;
+    height: 50px;
+    display: inline-block
+  }
+
+  .flex {
+    display: flex;
+    background: cyan;
+    flex-direction: column;
+  }
+
+  .inline-flex {
+    display: inline-flex;
+  }
+
+  .inline-flex-box {
+    display: inline-flexbox;
+  }
+
+
+
+  </style>
+</head>
+<body>
+  
+  <div class="none">I AM NONE</div>
+
+  <jonathan>Hellow world!</jonathan>
+
+  <div class="block">I AM BLOCK</div>
+  <div class="block">I AM BLOCK</div>
+  <div class="block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nisi placeat, repellendus distinctio odio expedita quae dolor eius perspiciatis, <span>labore sapiente fugiat</span> possimus quod mollitia repudiandae, architecto odit. Optio, tempore.</div>
+  
+  <div class="block">I AM BLOCKLorem ipsum dolor sit amet consectetur adipisicing elit. <strong>Repudiandae,</strong> quo ab repellat nam fugit nulla ut hic iure porro sequi tenetur, quas omnis ullam, alias sunt ipsam? Ut, accusamus optio.</div>
+
+  <div class="inline">I AM INLINE</div>
+  <div class="inline">I AM INLINE</div>
+  <div class="inline">I AM INLINE</div>
+  <div class="inline">I AM INLINE</div>
+  <div class="inline">I AM INLINE</div>
+  <div class="inline">I AM INLINE</div>
+  <div class="inline">I AM INLINE</div>
+
+  <div class="inline-block">Lorem ipsum dolor sit amet consectetur adipisicing elit. <strong>Quidem error</strong> deserunt veniam consequatur sequi asperiores optio tempore repudiandae beatae, dicta suscipit illum officiis, nisi harum ab esse nemo rem quis.</div>
+
+  <div class="flex">I AM FLEX</div>
+</body>
+</html>
