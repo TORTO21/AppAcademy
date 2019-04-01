@@ -49,4 +49,46 @@ class User
     QuestionFollow.followed_questions_for_user_id(@id)
   end
 
+  def liked_questions
+    QuestionLike.liked_questions_for_user_id(@id)
+  end
+
+  def average_karma
+    data = QuestionsDatabase.instance.execute(<<-SQL, @id)
+      SELECT
+        CAST(COUNT(question_likes.user_id) AS FLOAT) / COUNT(DISTINCT question_likes.question_id)
+      FROM
+        question_likes
+      LEFT OUTER JOIN
+        questions
+        ON questions.id = question_likes.question_id
+      WHERE
+        questions.author_id = ?;
+    SQL
+
+    karma = data.first.values.first
+    karma ? karma : 0
+  end
+
+  def save
+    unless @id
+      QuestionsDatabase.instance.execute(<<-SQL, @fname, @lname)
+        INSERT INTO
+          users (fname, lname)
+        VALUES
+          (?, ?);
+      SQL
+    else
+      QuestionsDatabase.instance.execute(<<-SQL, @fname, @lname, @id)
+        UPDATE
+          users
+        SET
+          fname = ?,
+          lname = ?
+        WHERE
+          id = ?;
+      SQL
+    end
+  end
+
 end

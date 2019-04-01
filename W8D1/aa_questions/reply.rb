@@ -76,5 +76,27 @@ class Reply
     data.map { |datum| Reply.new(datum) }
   end
   
+  def save
+    unless @id
+      QuestionsDatabase.instance.execute(<<-SQL, @question_id, @parent_id, @author_id, @body)
+        INSERT INTO
+          replies (question_id, parent_id, author_id, body)
+        VALUES
+          (?, ?, ?, ?);
+      SQL
+    else
+      QuestionsDatabase.instance.execute(<<-SQL, @question_id, @parent_id, @author_id, @body, @id)
+        UPDATE
+          replies
+        SET
+          question_id = ?,
+          parent_id = ?,
+          author_id = ?,
+          body = ?
+        WHERE
+          id = ?;
+      SQL
+    end
+  end
 
 end

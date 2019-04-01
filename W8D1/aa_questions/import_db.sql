@@ -67,7 +67,8 @@ INSERT INTO
 VALUES
   ('Assessment', 'When is A03?', 1),
   ('Sky color', 'What is the color Sky?', 2),
-  ('Chicken', 'Why did the chicken cross the road?', 2);
+  ('Chicken', 'Why did the chicken cross the road?', 2),
+  ('Silly Question', 'Orange.', 7);
 
 INSERT INTO 
   question_follows (user_id, question_id)
