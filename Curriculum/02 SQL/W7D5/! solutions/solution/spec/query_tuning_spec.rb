@@ -1,6 +1,6 @@
 
 require 'rspec'
-require 'query_tuning_problems.rb'
+require 'query_tuning_problems'
 
 describe "Query Tuning Problems" do
 
