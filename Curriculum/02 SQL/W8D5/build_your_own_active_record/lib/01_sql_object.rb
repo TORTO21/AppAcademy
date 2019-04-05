@@ -71,7 +71,6 @@ class SQLObject
 
   def initialize(params = {})
     params.each do |name, value|
-      # debugger
       name = name.to_sym
       if self.class.columns.include?(name)
         self.send("#{name}=", value)
@@ -79,7 +78,6 @@ class SQLObject
         raise "unknown attribute '#{name.to_s}'"
       end
     end
-    self.class.finalize!
   end
 
   def attributes
