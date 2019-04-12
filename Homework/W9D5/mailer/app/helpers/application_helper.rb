@@ -13,11 +13,11 @@ module ApplicationHelper
 
   def long_quote(author, &block)
     text = capture(&block)
-  
+
     html = "<blockquote cite=\"#{h(author)}\">"
     html += text
-    html += "</blockquote>"
-  
+    html += '</blockquote>'
+
     html.html_safe
   end
 end
