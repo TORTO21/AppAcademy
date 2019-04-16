@@ -12,9 +12,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in_user!(@user)
-      flash.now[:message] = 'Welcome Back'
+      flash[:message] = 'Welcome Back'
       # redirect_to user_url(@user)
-      redirect_to bands_url
+      redirect_to :bands
       # render :show
     else
       flash[:errors] = @user.errors.full_messages
