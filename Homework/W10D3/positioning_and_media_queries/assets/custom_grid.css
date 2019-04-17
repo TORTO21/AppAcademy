@@ -50,12 +50,30 @@ with a class attribute containing 'col-' */
     display: none;
   }
 
-  /* .hamburger-dropdown {
+  .hamburger-dropdown {
     display: block;
-  } */
+    position: fixed;
+    right: 15%; 
+  }
 
-  /* .hamburger-dropdown li {
-    background-image: url("hamburger.png")
-  } */
+  .hamburger-dropdown > li {
+    background-image: url("hamburger.png");
+    background-size: 50px 50px;
+    height: 50px;
+    width: 50px;
+    position: relative;
+  }
+  
+  .hamburger-dropdown-content {
+    display: none;
+    position: absolute;
+    left: -70%;
+    top: 40px;
+   
+  }
+  .hamburger-dropdown:hover .hamburger-dropdown-content {
+    display: block;
+  }
+
 }
 
