@@ -19,8 +19,12 @@ class Route
   # use pattern to pull out route params (save for later?)
   # instantiate controller and call controller action
   def run(req, res)
-    
-    @controller_class.new(req, res, {}).invoke_action(@action_name)
+    params = {}
+    match_data = Regexp.new(@pattern).match(req.path)
+    match_data.names.each do |match|
+      params[match] = match_data[match]
+    end
+    @controller_class.new(req, res, params).invoke_action(@action_name)
     
   end
 end
@@ -40,13 +44,14 @@ class Router
   # evaluate the proc in the context of the instance
   # for syntactic sugar :)
   def draw(&proc)
+    self.instance_eval(&proc)
   end
 
   # make each of these methods that
   # when called add route
   [:get, :post, :put, :delete].each do |http_method|
-    self.define_method(http_method.to_s) do |pattern, controller_class, action_name|
-      add_route(pattern, self, controller_class, action_name)
+    self.define_method(http_method) do |pattern, controller_class, action_name|
+      add_route(pattern, http_method, controller_class, action_name)
     end
   end
 
@@ -61,7 +66,7 @@ class Router
   # either throw 404 or call run on a matched route
   def run(req, res)
     @routes.each do |route|
-      if route.matches(req)
+      if route.matches?(req)
         return route
       else
         res.status = 404

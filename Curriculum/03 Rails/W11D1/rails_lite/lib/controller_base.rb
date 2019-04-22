@@ -10,10 +10,10 @@ class ControllerBase
   attr_reader :req, :res, :params
 
   # Setup the controller
-  def initialize(req, res, params)
+  def initialize(req, res, params = {})
     @req = req
     @res = res
-    @params = params
+    @params = params.merge(req.params)
   end
 
   # Helper method to alias @already_built_response
@@ -27,7 +27,7 @@ class ControllerBase
       @res.status = 302
       @res.add_header('location', url)
       @already_built_response = true
-      @session.store_session(@res)
+      session.store_session(@res)
     else
       raise RuntimeError
     end
@@ -42,7 +42,8 @@ class ControllerBase
       @res.add_header('content-type', content_type)
       @res.write content
       @already_built_response = true
-      @session.store_session(@res)
+      session.store_session(@res)
+      
     else
       raise RuntimeError
     end
@@ -67,7 +68,7 @@ class ControllerBase
   # use this with the router to call action_name (:index, :show, :create...)
   def invoke_action(name)
     self.send(name)
-    # send(name)
+    # render name unless already_built_response?
   end
 end
 

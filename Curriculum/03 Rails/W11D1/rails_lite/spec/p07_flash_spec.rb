@@ -3,7 +3,7 @@ require 'flash'
 require 'controller_base'
 
 describe Flash do
-  let(:req) { Rack::Request.new({'rack.input' => {}}) }
+  let(:req) { Rack::Request.new('rack.input' => {}) }
   let(:res) { Rack::Response.new([], '200', {}) }
   let(:flash) { Flash.new(req) }
 
@@ -33,11 +33,12 @@ describe Flash do
       cookie_hash = JSON.parse(cookie_val)
 
       expect(cookie_hash).to be_instance_of(Hash)
+      # debugger
       expect(cookie_hash['first_key']).to eq('first_val')
     end
 
     it 'does not persist data more than 1 request' do
-      second_req = Rack::Request.new({'rack.input' => {}})
+      second_req = Rack::Request.new('rack.input' => {})
       second_res = Rack::Response.new([], '200', {})
 
       cookie_str = res.headers['Set-Cookie']
@@ -46,7 +47,9 @@ describe Flash do
       second_req.cookies.merge!(cookie)
 
       second_flash = Flash.new(second_req)
+      # debugger
       second_flash.store_flash(second_res)
+      # debugger
 
       second_cookie_str = second_res.headers['Set-Cookie']
       second_cookie = Rack::Utils.parse_query(second_cookie_str)

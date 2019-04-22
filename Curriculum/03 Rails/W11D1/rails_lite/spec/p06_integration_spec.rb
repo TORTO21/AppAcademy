@@ -3,7 +3,7 @@ require 'controller_base'
 require 'router'
 
 describe 'the symphony of things' do
-  let(:req) { Rack::Request.new({'rack.input' => ''}) }
+  let(:req) { Rack::Request.new('rack.input' => '') }
   let(:res) { Rack::MockResponse.new('200', [], {}) }
 
   before(:all) do
