@@ -14,7 +14,7 @@ function quicksort(arr, comparisonFunc) {
   const right = [];
   arr.forEach(function(el, idx) {
     if (idx !== 0) {
-      if comparisonFunc(pivot, el) === -1 {
+      if (comparisonFunc(pivot, el)) === -1 {
         left.push(el);
       } else {
         right.push(el);
