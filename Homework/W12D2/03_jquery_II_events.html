@@ -53,3 +53,21 @@ $("#cool-thing-form").on("submit", event => {
     }
   });
 </script>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.js"></script>
+
+<ul>
+  <li>Racecars</li>
+  <li>Lasers</li>
+  <li>Aeroplanes</li>
+</ul>
+
+<script>
+  var $listItems = $("li");
+  $listItems.on("mouseover", event => {
+    const currentTarget = event.currentTarget;
+    const $currentTarget = $(currentTarget);
+    alert($currentTarget.text());
+  })
+</script>
