@@ -1,8 +1,8 @@
-Function.prototype.myBind = function (ctx) {
-  return () => {
-     return this.apply(ctx);
-  }
-}
+// Function.prototype.myBind = function (ctx) {
+//   return () => {
+//      return this.apply(ctx);
+//   }
+// }
 
 // myBind with arguments
 Function.prototype.myBind = function (ctx, ...bindArgs) {
@@ -12,14 +12,14 @@ Function.prototype.myBind = function (ctx, ...bindArgs) {
 }
 
 // myBind with args ES5
-Function.prototype.myBind = function(context) {
-  let that = this;
-  var bindArgsList = [].slice.call(arguments, 1);
-  return function() {
-    var callArgsList = [].slice.call(arguments);
-    return that.apply(context, bindArgsList.concat(callArgsList))
-  }
-}
+// Function.prototype.myBind = function(context) {
+//   let that = this;
+//   var bindArgsList = [].slice.call(arguments, 1);
+//   return function() {
+//     var callArgsList = [].slice.call(arguments);
+//     return that.apply(context, bindArgsList.concat(callArgsList))
+//   }
+// }
 
 class Cat {
   constructor(name) {
