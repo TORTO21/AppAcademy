@@ -74,5 +74,4 @@ class Widget extends React.Component {
   }
 };
 
-
 export default Widget;
