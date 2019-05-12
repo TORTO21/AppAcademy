@@ -42,9 +42,11 @@ Assessments/
 Installs/
 Notes/
 Personal/
-Lectures/
+# Lectures/
 aA\ Ruby\ Foundation\ Projects/
+aA\ Curriculum/
 node_modules/
+!\ Solutions/
 
 # Specified files #
 ###################
