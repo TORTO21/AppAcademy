@@ -1,6 +1,6 @@
 
 export const fetchSearchGiphys = (searchTerm) => {
-  let APIKey = '8cZgGrMrip7PKJDEZLZu5CqmwyrSgMCL'
+  let APIKey = ''
   return $.ajax({
     method: 'GET',
     dataType: 'json',
