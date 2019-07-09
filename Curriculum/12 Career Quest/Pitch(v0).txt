@@ -1,10 +1,12 @@
-When I was 7, our school introduced us to Monochrome, mouseless, IBM compatibles.  It-was-the-future!
+I'm a Software Engineer which started when I was 7.
+
+Our school introduced us to Monochrome, mouseless, IBM compatibles.  It-was-the-future!
 
 I was a fast typest, learned all the programs, and then one day, we were given GW BASIC. And at age 9, I wrote my first loop -- it literally did nothing... 10 times.
 
 But I was hooked.  Unfortunately, I never had a clear cut path or anyone to mentor me.
 
-So I grew up, went to University, burned out on Chemical Engineering, and eventually earned a degree in Multimedia Design which combined my two passions--Art & Computers.
+So you move on.  You grow up.  I went to University, burned out on Chemical Engineering, and eventually earned a degree in Multimedia Design which combined my two passions--Art & Computers.
 
 And what do I do with that degree? Well, it's obvious. I become an Operations Manager. <beat> It was 2009--times were tough. You get work where you can.
 
@@ -20,12 +22,13 @@ From there, it kind of evolved.  You have a MERN stack.  Add some GraphQL and Ap
 
 In all honesty, this past year has really been just non-stop.
 
-And I guess that brings me back to why I'm here.  I'm good in a team and I'm ready to work -- to hustle, learn, and contribute.
+And I guess that brings me back to why I'm here.  I'm good in a team and I'm ready to work -- to hustle, grow, and contribute.
 
 I think you're looking for good people, and I know I can help.
 
+(Current: 3 min)
 
-
-
+NOTES:
+- Don't use "LEARN" - comes off as not knowledgeable
 
 I've always been adept with computers on the hardware side.  I built my first computer when I was 9--when graphics outputted directly from the motherboard and any time you wanted to add a new piece of hardware you had to mess with Interupt ReQuests in the BIOS
