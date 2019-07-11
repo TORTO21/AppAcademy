@@ -116,11 +116,22 @@ function maxNonAdjacentSum(nums, memo = {}) {
 
 // TABULATION
 function minChange(coins, amount) {
-    let table = new Array(coins.length).fill[0]
+    let table = new Array(amount + 1).fill(Infinity) // infinity since a minimization problem
+    // table[0] corresponds to 0 cents so 0 coins
+    table[0] = 0
 
-    table[0] = coins[0]
+    // at any point in time, the table index corresponds to an amount and the element is the min num of coins to produce that amount
+    coins.forEach(val => {
+        for (let amt = 0; amt <= table.length; amt++) {
+            for (let qty = 0; qty * val <= amt; qty++) {
+                let remainder = amt - qty * val
+                let attempt = table[remainder] + qty;
+                if (attempt < table[amt]) table[amt] = attempt
 
-    
+            }
+        }
+    })
+    return table[table.length - 1]
 }
 
 
