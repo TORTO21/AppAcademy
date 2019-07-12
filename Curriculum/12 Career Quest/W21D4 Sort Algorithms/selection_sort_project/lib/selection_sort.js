@@ -6,16 +6,15 @@ function swap(arr, index1, index2) {
 }
 
 function selectionSort(arr) {
-    let minValue = arr[0]
-
+    
     for (let i = 0; i < arr.length; i++) {
-        let curValue = arr[i]
+        let minIndex = i
         for (let j = i; j < arr.length; j++) {
-            console.log(arr)
-            if (arr[j] < curValue) swap(arr, i, j)
-            console.log(arr)
+            if (arr[j] < arr[minIndex]) 
+            minIndex = j
         }
-        
+        // if change occurred, i swaps with j, else i swaps with itself
+        swap(arr, i, minIndex)
     }
     return arr
 }
