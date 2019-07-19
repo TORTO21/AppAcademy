@@ -41,22 +41,45 @@
 // -----------
 function linkedListIntersection(list1, list2) {
   // TODO: Implement the hasCycle function!
-  const list1Length = list1.length
-  const list2Length = list2.length
-  let list1Node = list1.head
   
-  for (let i = 0; i < list1Length; i++) {
-    let list2Node = list2.head
-    // console.log(i)
-    for (let j = 0; j < list2Length; j++) {
-      // console.log(j)
-      if (list1Node == list2Node) return list1Node
-      list2Node = list2Node.next
+  // const list1Length = list1.length
+  // const list2Length = list2.length
+  
+  const list1Length = getLinkedListLength(list1.head);
+  const list2Length = getLinkedListLength(list2.head);
+
+  // console.log(list1Length)
+  // console.log(list2Length)
+  
+  let diff = Math.abs(list1Length - list2Length)
+  let long = list1Length >= list2Length ? list1.head : list2.head
+  let short = list1Length >= list2Length ? list2.head : list1.head
+
+  while (long && short) {
+    // console.log("long==========================")
+    // console.log(long)
+    // console.log("short========")
+    // console.log(short)
+    if (diff > 0) {
+      long = long.next
+      diff--
+      continue
     }
-    list1Node = list1Node.next
+    if (long === short) return long
+    long = long.next
+    short = short.next
+
   }
   return null
-}``
+}
+function getLinkedListLength(listNode) {
+  if (listNode.next === null) {
+    return 1;
+  } else {
+    return getLinkedListLength(listNode.next) + 1;
+  }
+}
+
 
 // ----------------------------------------
 // Given: Singly Linked List - Do Not Edit!
