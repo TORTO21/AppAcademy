@@ -37,18 +37,18 @@ class Stack {
     constructor() {
         this.top = null
         this.bottom = null
-        this.length = null
+        this.length = 0
     }
 
-    push(val) {
-        let pushed = new Node(val)
+    push(node) {
+        
         if (this.length) {
             let oldTop = this.top
-            this.top = pushed
-            pushed.next = oldTop
+            this.top = node
+            node.next = oldTop
         } else {
-            this.top = pushed
-            this.bottom = pushed
+            this.top = node
+            this.bottom = node
         }
         return ++this.length
     }
@@ -59,7 +59,7 @@ class Stack {
         if (this.length === 1) this.bottom = null
         this.top = this.top.next
         this.length--
-        return popped.value
+        return popped
     }
 
     size() {
@@ -69,7 +69,45 @@ class Stack {
 
 class StackQueue {
     // TODO: Implement the StackQueue class!
+    constructor() {
+        this.front = null
+        this.back = null
+        this.inStack = new Stack
+        this.outStack = new Stack
+    }
 
+    enqueue(val) {
+        let queued = new Node(val)
+        if (this.inStack.length) {
+            this.back.next = queued
+        } else {
+            this.front = queued
+        }
+        this.back = queued
+        // only push copy of node -- want pointer to be null
+        this.inStack.push(new Node (queued.value))
+        return this.size()
+    }
+
+    dequeue() {
+        if (!this.front) return null
+        if (this.size() === 1) this.back = null
+        this.front = this.front.next
+
+        //reverse inStack order so front is on top of outStack
+        if (this.outStack.size() === 0) {
+            while (this.inStack.size() > 0) {
+                this.outStack.push(this.inStack.pop())
+            }
+        }
+
+        let popped = this.outStack.pop()
+        return popped
+    }
+
+    size() {
+        return this.inStack.length + this.outStack.length
+    }
 };
 
 exports.Node = Node;
