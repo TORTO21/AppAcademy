@@ -26,16 +26,23 @@
 // Let's code!
 // -----------
 
-function iterateAcrossLinkedListBackwards(linkedList) {
+function iterateAcrossLinkedListBackwardsWithArrays(linkedList) {
     // TODO: Implement the iterateAcrossLinkedListBackwards function here
-    // let stack = []
-    // let currentNode = linkedList.head
-    // for (let i = 0; i < linkedList.length; i++) {
-    //     stack.unshift(String(currentNode.value))
-    //     currentNode = currentNode.next
-    // }
-    // let result = stack.join(' -> ')
-    // return result
+    let stack = []
+    let currentNode = linkedList.head
+    while (currentNode) {
+        stack.push(String(currentNode.value))
+        currentNode = currentNode.next
+    }
+    let reverseStack = []
+    while (stack.length) {
+        reverseStack.push(stack.pop())
+    }
+    let result = reverseStack.join(' -> ')
+    return result
+}
+
+function iterateAcrossLinkedListBackwards(linkedList) {
     if (!linkedList.length) return ''
 
     const stack = new Stack
