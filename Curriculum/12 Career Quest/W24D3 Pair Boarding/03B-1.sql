@@ -36,7 +36,7 @@ SELECT
 FROM
   users
 WHERE
-  users.last_login BETWEEN :time_period_start AND :time_period_end ;
+users.last_login BETWEEN time_period_start AND time_period_end ;
 
 -- Active Record:
 -- User.where(last_login: (time_period_start..time_period_end)).count
