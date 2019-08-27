@@ -64,3 +64,5 @@ RECOMMENDATION:
 Tech Interview
   - Mark or Josh
   - given a problem, talk about it
+
+Mock Interview with Josh Kern
